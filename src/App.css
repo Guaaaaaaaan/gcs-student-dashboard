@@ -156,9 +156,9 @@
 }
 
 .custom-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px) scale(1.015) rotate(0.8deg);
   border-color: var(--border-hover);
-  box-shadow: var(--shadow-lg), 0 10px 20px -5px var(--primary-glow);
+  box-shadow: var(--shadow-lg), 0 12px 24px -6px var(--primary-glow);
 }
 
 /* Card Badges and Status */
@@ -433,30 +433,63 @@
 /* Star Rating System */
 .rating-system {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
   align-items: center;
   gap: 0.2rem;
   margin: 0.5rem 0 1rem;
 }
 
 .star-btn {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: var(--text-dark);
   transition: transform var(--transition-fast), color var(--transition-fast);
-}
-
-.star-btn:hover {
-  transform: scale(1.2);
 }
 
 .star-btn.active {
   color: var(--accent-favorite);
 }
 
+/* Progressive Star Hover on group hover */
+.rating-system:hover .star-btn {
+  color: var(--text-dark) !important;
+}
+
+/* Color the hovered star and all subsequent sibling elements in row-reverse order */
+.rating-system .star-btn:hover,
+.rating-system .star-btn:hover ~ .star-btn {
+  color: var(--accent-favorite) !important;
+  transform: scale(1.25);
+}
+
 .rating-value {
   font-size: 0.8rem;
   color: var(--text-muted);
   font-weight: 600;
-  margin-left: 0.5rem;
+  margin-right: 0.5rem; /* Move margin to right since order is reversed */
+}
+
+/* Like Bounce pop animation class */
+.like-pop {
+  animation: like-bounce 0.45s ease-out;
+}
+
+@keyframes like-bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.4) rotate(-15deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  80% {
+    transform: scale(1.05) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
 }
 
 /* Enroll Button */

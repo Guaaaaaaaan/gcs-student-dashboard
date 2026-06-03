@@ -84,6 +84,10 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Background Decorative Blobs */}
+      <div className="glow-blob blob-1"></div>
+      <div className="glow-blob blob-2"></div>
+
       {/* School Header with tab state, total students and total courses */}
       <Header 
         activeTab={activeTab} 
